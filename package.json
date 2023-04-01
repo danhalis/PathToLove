@@ -1,0 +1,39 @@
+{
+  "name": "pathtolove",
+  "version": "1.0.0",
+  "description": "Path To Love game",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack serve --open",
+    "server": "webpack && node server.ts",
+    "watch": "webpack --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danhalis/PathToLove.git"
+  },
+  "author": "Hieu Dao Le Duc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danhalis/PathToLove/issues"
+  },
+  "homepage": "https://github.com/danhalis/PathToLove#readme",
+  "devDependencies": {
+    "@types/lodash": "^4.14.192",
+    "css-loader": "^6.7.3",
+    "express": "^4.18.2",
+    "html-webpack-plugin": "^5.5.0",
+    "lodash": "^4.17.21",
+    "style-loader": "^3.3.2",
+    "typescript": "^5.0.2",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-middleware": "^6.0.2",
+    "webpack-dev-server": "^4.13.1",
+    "webpack-shell-plugin-next": "^2.3.1"
+  },
+  "dependencies": {
+    "copy-webpack-plugin": "^11.0.0"
+  }
+}

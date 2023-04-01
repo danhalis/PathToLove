@@ -1,0 +1,180 @@
+{
+	"sounds": [
+		{
+			"name": "selection",
+			"source": "./assets/sounds/selection.wav",
+			"maxStreams": 5,
+			"volume": 0.5
+		},
+		{
+			"name": "shoot",
+			"source": "./assets/sounds/shoot.wav",
+			"maxStreams": 100,
+			"volume": 0.1
+		},
+		{
+			"name": "hit",
+			"source": "./assets/sounds/hit.mp3",
+			"maxStreams": 1,
+			"volume": 1
+		},
+		{
+			"name": "metal-hit",
+			"source": "./assets/sounds/metal-hit.wav",
+			"maxStreams": 10,
+			"volume": 0.7
+		}, 
+		{
+			"name": "chain",
+			"source": "./assets/sounds/chain.wav",
+			"maxStreams": 1,
+			"volume": 1
+		}
+	],
+	"fonts": [
+		{
+			"name": "Joystix",
+			"source": "./assets/fonts/Joystix.ttf"
+		}
+	],
+	"images": [
+		{
+			"name": "check",
+			"source": "./assets/images/check.svg",
+			"width": 16,
+			"height": 16
+		},
+		{
+			"name": "stone",
+			"source": "./assets/images/stone.svg",
+			"width": 16,
+			"height": 16
+		},
+		{
+			"name": "flower",
+			"source": "./assets/images/flower.svg",
+			"width": 5,
+			"height": 13
+		},
+		{
+			"name": "flower-on-ground",
+			"source": "./assets/images/flower-on-ground.svg",
+			"width": 13,
+			"height": 5
+		},
+		{
+			"name": "male-standing-still-upper-body",
+			"source": "./assets/images/male/standing-still/upper-body/male-standing-still-upper-body-sheet.svg",
+			"width": 32,
+			"height": 320
+		},
+		{
+			"name": "male-standing-still-lower-body",
+			"source": "./assets/images/male/standing-still/lower-body/male-standing-still-lower-body-sheet.svg",
+			"width": 32,
+			"height": 320
+		},
+		{
+			"name": "female-standing-still-upper-body",
+			"source": "./assets/images/female/standing-still/upper-body/female-standing-still-upper-body-sheet.svg",
+			"width": 32,
+			"height": 320
+		},
+		{
+			"name": "female-standing-still-lower-body",
+			"source": "./assets/images/female/standing-still/lower-body/female-standing-still-lower-body-sheet.svg",
+			"width": 32,
+			"height": 320
+		},
+		{
+			"name": "male-offering-flower-upper-body",
+			"source": "./assets/images/male/offering-flower/upper-body/male-offering-flower-upper-body-sheet.svg",
+			"width": 32,
+			"height": 224
+		},
+		{
+			"name": "female-offering-flower-upper-body",
+			"source": "./assets/images/female/offering-flower/upper-body/female-offering-flower-upper-body-sheet.svg",
+			"width": 32,
+			"height": 224
+		},
+		{
+			"name": "male-walking-lower-body",
+			"source": "./assets/images/male/walking/lower-body/male-walking-lower-body-sheet.svg",
+			"width": 192,
+			"height": 320
+		},
+		{
+			"name": "female-walking-lower-body",
+			"source": "./assets/images/female/walking/lower-body/female-walking-lower-body-sheet.svg",
+			"width": 192,
+			"height": 320
+		},
+		{
+			"name": "male-lying-down-upper-body",
+			"source": "./assets/images/male/lying-down/upper-body/male-lying-down-upper-body-sheet.svg",
+			"width": 32,
+			"height": 160
+		},
+		{
+			"name": "female-lying-down-upper-body",
+			"source": "./assets/images/female/lying-down/upper-body/female-lying-down-upper-body-sheet.svg",
+			"width": 32,
+			"height": 160
+		},
+		{
+			"name": "male-lying-down-lower-body",
+			"source": "./assets/images/male/lying-down/lower-body/male-lying-down-lower-body-sheet.svg",
+			"width": 32,
+			"height": 160
+		},
+		{
+			"name": "female-lying-down-lower-body",
+			"source": "./assets/images/female/lying-down/lower-body/female-lying-down-lower-body-sheet.svg",
+			"width": 32,
+			"height": 160
+		},
+		{
+			"name": "heart-beating",
+			"source": "./assets/images/heart/beating/heart-beating-sheet.svg",
+			"width": 252,
+			"height": 35
+		},
+		{
+			"name": "heart-crying",
+			"source": "./assets/images/heart/crying/heart-crying-sheet.svg",
+			"width": 252,
+			"height": 35
+		},
+		{
+			"name": "heart-shooting",
+			"source": "./assets/images/heart/shooting/heart-shooting-sheet.svg",
+			"width": 252,
+			"height": 35
+		},
+		{
+			"name": "little-heart",
+			"source": "./assets/images/heart/shooting/little-heart.png",
+			"width": 16,
+			"height": 16
+		},
+		{
+			"name": "faceless-heart-beating",
+			"source": "./assets/images/locked-heart/beating/faceless-heart-beating-sheet.svg",
+			"width": 252,
+			"height": 35
+		}, 
+		{
+			"name": "lock",
+			"source": "./assets/images/locked-heart/beating/lock.svg",
+			"width": 42,
+			"height": 35
+		},
+		{
+			"name": "friend-zone",
+			"source": "./assets/images/friend-zone.png",
+			"width": 412,
+			"height": 412
+		}
+	]
+}

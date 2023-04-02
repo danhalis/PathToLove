@@ -7,8 +7,8 @@ import {
     TILE_SIZE,
     STANDARD_CANVAS_WIDTH,
     sounds
-} from "globals.js";
-import State from "../../../lib/State.js";
+} from "globals";
+import State from "../../../lib/State.ts";
 import ColorSelectionState from "./ColorSelectionState.js";
 import Genders from "../../enums/Genders.js";
 import SoundNames from "../../enums/SoundNames.js";

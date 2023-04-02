@@ -1,7 +1,7 @@
 import Animation from "../../../lib/Animation.js";
-import State from "../../../lib/State.js";
+import State from "../../../lib/State.ts";
 import SoundNames from "../../enums/SoundNames.js";
-import { sounds } from "globals.js";
+import { sounds } from "globals";
 import Lock from "../../objects/Lock.js";
 
 export default class LockBreakingState extends State {

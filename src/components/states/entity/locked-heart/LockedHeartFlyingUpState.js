@@ -1,5 +1,5 @@
-import { CANVAS_HEIGHT, CANVAS_WIDTH, images, keys, timer } from "globals.js";
-import State from "lib/State.js";
+import { CANVAS_HEIGHT, CANVAS_WIDTH, images, keys, timer } from "globals";
+import State from "lib/State.ts";
 import ImageNames from "../../../enums/ImageNames.js";
 import Sprite from "lib/Sprite.js";
 import Animation from "lib/Animation.js";

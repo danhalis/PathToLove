@@ -1,6 +1,5 @@
-import { getRandomPositiveNumber } from "../../../lib/RandomNumberHelpers.js";
-import Vector from "../../../lib/Vector.js";
-import { CANVAS_HEIGHT, CANVAS_WIDTH, STANDARD_CANVAS_WIDTH, TILE_SIZE } from "globals.js";
+import Vector from "../../../lib/Vector.ts";
+import { CANVAS_HEIGHT, CANVAS_WIDTH, STANDARD_CANVAS_WIDTH, TILE_SIZE } from "globals";
 import LittleHeart from "../LittleHeart.js";
 
 export default class LittleHeartFactory {

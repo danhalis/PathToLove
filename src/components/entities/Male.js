@@ -1,11 +1,11 @@
 import Genders from "../enums/Genders.js";
-import Character from "./Character.js";
-import Vector from "../../lib/Vector.js";
+import Character from "./character/Character.ts";
+import Vector from "../../lib/Vector.ts";
 import MaleColors from "../enums/MaleColors.js";
 import Directions from "../enums/Directions.js";
-import { context, TILE_SIZE } from "globals.js";
+import { context, TILE_SIZE } from "globals";
 import CharacterStandingStillState from "../states/entity/character/CharacterStandingStillState.js";
-import CharacterLyingDownState from "../states/entity/character/CharacterLyingDownState.js";
+import CharacterLyingDownState from "../states/entity/character/CharacterLyingDownState";
 
 export default class Male extends Character {
 

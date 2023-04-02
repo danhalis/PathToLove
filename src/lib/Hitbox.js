@@ -1,5 +1,5 @@
 import { isAABBCollision } from "./CollisionHelpers.js";
-import Vector from "./Vector.js";
+import Vector from "./Vector.ts";
 
 export default class Hitbox {
 	/**

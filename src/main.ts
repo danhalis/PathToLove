@@ -1,11 +1,4 @@
 import Game from "lib/Game.js";
-import Vector from "lib/Vector.js";
-import Character from "./components/entities/Character.js";
-import Male from "./components/entities/Male.js";
-import Female from "./components/entities/Female.js";
-import FemaleColors from "./components/enums/FemaleColors.js";
-import Genders from "./components/enums/Genders.js";
-import MaleColors from "./components/enums/MaleColors.js";
 
 import {
 	canvas,
@@ -17,7 +10,7 @@ import {
 	images,
 	sounds,
 	stateMachine,
-} from "globals.js";
+} from "globals";
 import PlayState from "./components/states/game/PlayState.js";
 import GenderSelectionState from "./components/states/game/GenderSelectionState.js";
 import ColorSelectionState from "./components/states/game/ColorSelectionState.js";
@@ -28,8 +21,8 @@ import TitleScreenState from "./components/states/game/TitleScreenState.js";
 import EndingState from "./components/states/game/EndingState.js";
 
 // set up canvas
-canvas.width = CANVAS_WIDTH;
-canvas.height = CANVAS_HEIGHT;
+canvas!.width = CANVAS_WIDTH;
+canvas!.height = CANVAS_HEIGHT;
 
 import config from 'config.json';
 // Fetch the asset definitions from config.json.
@@ -60,7 +53,7 @@ stateMachine.change(TitleScreenState.NAME);
 // stateMachine.change(GenderSelectionState.NAME + CustomizationFor.Player);
 
 // Add event listeners for player input.
-canvas.addEventListener('keydown', event => {
+canvas!.addEventListener('keydown', event => {
 	if (event.key == 'w' || event.key == 'W') {
 		keys['w'] = true;
 	}
@@ -78,7 +71,7 @@ canvas.addEventListener('keydown', event => {
 	}
 });
 
-canvas.addEventListener('keyup', event => {
+canvas!.addEventListener('keyup', event => {
 	if (event.key == 'w' || event.key == 'W') {
 		keys['w'] = false;
 	}
@@ -96,9 +89,9 @@ canvas.addEventListener('keyup', event => {
 	}
 });
 
-const game = new Game(stateMachine, context, canvas.width, canvas.height);
+const game = new Game(stateMachine, context, canvas!.width, canvas!.height);
 
 game.start();
 
 // Focus the canvas so that the player doesn't have to click on it.
-canvas.focus();
+canvas!.focus();

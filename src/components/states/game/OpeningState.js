@@ -1,10 +1,10 @@
-import State from "../../../lib/State.js";
-import Vector from "../../../lib/Vector.js";
-import Character from "../../entities/Character.js";
+import State from "../../../lib/State.ts";
+import Vector from "../../../lib/Vector.ts";
+import Character from "../../entities/character/Character.ts";
 import Heart from "../../entities/Heart.js";
 import Directions from "../../enums/Directions.js";
 import Genders from "../../enums/Genders.js";
-import { CANVAS_HEIGHT, CANVAS_WIDTH, context, GROUND_LEVEL, keys, playerAndCrush, STANDARD_CANVAS_WIDTH, stateMachine, TILE_SIZE, timer } from "globals.js";
+import { CANVAS_HEIGHT, CANVAS_WIDTH, context, GROUND_LEVEL, keys, playerAndCrush, STANDARD_CANVAS_WIDTH, stateMachine, TILE_SIZE, timer } from "globals";
 import Stone from "../../objects/Stone.js";
 import PlayState from "./PlayState.js";
 

@@ -1,8 +1,8 @@
-import { images, keys, TILE_SIZE } from "globals.js";
-import State from "lib/State.js";
+import { images, keys, TILE_SIZE } from "globals";
+import State from "lib/State.ts";
 import ImageNames from "../../../enums/ImageNames.js";
 import Sprite from "lib/Sprite.js";
-import Character from "../../../entities/Character.js";
+import Character from "../../../entities/character/Character.ts";
 import CharacterWalkingState from "./CharacterWalkingState.js";
 import Genders from "../../../enums/Genders.js";
 import Animation from "lib/Animation.js";

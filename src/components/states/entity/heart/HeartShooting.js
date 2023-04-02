@@ -1,10 +1,10 @@
-import { CANVAS_WIDTH, images, sounds, STANDARD_CANVAS_WIDTH, timer } from "globals.js";
-import State from "lib/State.js";
+import { CANVAS_WIDTH, images, sounds, STANDARD_CANVAS_WIDTH, timer } from "globals";
+import State from "lib/State.ts";
 import ImageNames from "../../../enums/ImageNames.js";
 import Sprite from "lib/Sprite.js";
 import Animation from "lib/Animation.js";
 import Heart from "../../../entities/Heart.js";
-import Vector from "lib/Vector.js";
+import Vector from "lib/Vector.ts";
 import { getRandomPositiveNumber } from "lib/RandomNumberHelpers.js";
 import SoundNames from "../../../enums/SoundNames.js";
 

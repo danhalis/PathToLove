@@ -1,9 +1,9 @@
-import State from "../../../lib/State.js";
-import Vector from "../../../lib/Vector.js";
-import Character from "../../entities/Character.js";
+import State from "../../../lib/State.ts";
+import Vector from "../../../lib/Vector.ts";
+import Character from "../../entities/character/Character.ts";
 import Heart from "../../entities/Heart.js";
 import LockedHeart from "../../entities/LockedHeart.js";
-import { CANVAS_HEIGHT, CANVAS_WIDTH, context, GROUND_LEVEL, STANDARD_CANVAS_WIDTH, stateMachine, timer } from "globals.js";
+import { CANVAS_HEIGHT, CANVAS_WIDTH, context, GROUND_LEVEL, STANDARD_CANVAS_WIDTH, stateMachine, timer } from "globals";
 import Flower from "../../objects/Flower.js";
 import Lock from "../../objects/Lock.js";
 import SoundWaves from "../../objects/SoundWaves.js";

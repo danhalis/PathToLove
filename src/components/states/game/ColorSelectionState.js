@@ -9,10 +9,10 @@ import {
     playerAndCrush,
     GROUND_LEVEL,
     sounds
-} from "globals.js";
-import State from "../../../lib/State.js";
-import Vector from "../../../lib/Vector.js";
-import Character from "../../entities/Character.js";
+} from "globals";
+import State from "../../../lib/State.ts";
+import Vector from "../../../lib/Vector.ts";
+import Character from "../../entities/character/Character.ts";
 import Male from "../../entities/Male.js";
 import Genders from "../../enums/Genders.js";
 import Female from "../../entities/Female.js";

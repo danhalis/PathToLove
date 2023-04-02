@@ -3,7 +3,7 @@ import StateMachine from "../../lib/StateMachine.js";
 import Directions from "../enums/Directions.js";
 import ImageNames from "../enums/ImageNames.js";
 import SoundNames from "../enums/SoundNames.js";
-import { CANVAS_WIDTH, context, images, sounds, STANDARD_CANVAS_WIDTH, timer } from "globals.js";
+import { CANVAS_WIDTH, context, images, sounds, STANDARD_CANVAS_WIDTH, timer } from "globals";
 import LockBreakingState from "../states/object/LockBreakingState.js";
 import LockIdleState from "../states/object/LockIdleState.js";
 import Object from "./Object.js";

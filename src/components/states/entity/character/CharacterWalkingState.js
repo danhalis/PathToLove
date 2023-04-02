@@ -1,9 +1,9 @@
-import { images, keys, TILE_SIZE, timer } from "globals.js";
-import State from "lib/State.js";
+import { images, keys, TILE_SIZE, timer } from "globals";
+import State from "lib/State.ts";
 import ImageNames from "../../../enums/ImageNames.js";
 import Sprite from "lib/Sprite.js";
 import Animation from "lib/Animation.js";
-import Character from "../../../entities/Character.js";
+import Character from "../../../entities/character/Character.ts";
 import CharacterStandingStillState from "./CharacterStandingStillState.js";
 import Genders from "../../../enums/Genders.js";
 import Directions from "../../../enums/Directions.js";
@@ -315,7 +315,7 @@ export default class CharacterWalkingState extends State {
 	}
 
 	update(dt) {
-		if (this.character.autoMoving) {
+		if (this.character.isAutoMoving) {
 			if (this.character.direction == Directions.Left) {
 				if (this.character.checkLeftConstraintBox()) {
 					this.character.stop();

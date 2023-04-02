@@ -1,8 +1,8 @@
 import Hitbox from "../../lib/Hitbox.js";
 import StateMachine from "../../lib/StateMachine.js";
-import Vector from "../../lib/Vector.js";
+import Vector from "../../lib/Vector.ts";
 import SoundNames from "../enums/SoundNames.js";
-import { CANVAS_WIDTH, keys, sounds, STANDARD_CANVAS_WIDTH, timer } from "globals.js";
+import { CANVAS_WIDTH, keys, sounds, STANDARD_CANVAS_WIDTH, timer } from "globals";
 import HeartCryingState from "../states/entity/heart/HeartCryingState.js";
 import HeartIdleState from "../states/entity/heart/HeartIdleState.js";
 import HeartShootingState from "../states/entity/heart/HeartShooting.js";

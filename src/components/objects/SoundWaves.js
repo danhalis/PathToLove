@@ -1,5 +1,5 @@
-import Vector from "../../lib/Vector.js";
-import { context, CANVAS_HEIGHT, CANVAS_WIDTH, DEBUG } from "globals.js";
+import Vector from "../../lib/Vector.ts";
+import { context, CANVAS_HEIGHT, CANVAS_WIDTH, DEBUG } from "globals";
 import FrequencyBar from "./FrequencyBar.js";
 
 export default class SoundWaves {

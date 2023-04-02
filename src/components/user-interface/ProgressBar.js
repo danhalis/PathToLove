@@ -1,6 +1,6 @@
 import { roundedRectangle } from "../../lib/DrawingHelpers copy.js";
-import Vector from "../../lib/Vector.js";
-import { CANVAS_HEIGHT, CANVAS_WIDTH, context, STANDARD_CANVAS_WIDTH, timer } from "globals.js";
+import Vector from "../../lib/Vector.ts";
+import { CANVAS_HEIGHT, CANVAS_WIDTH, context, STANDARD_CANVAS_WIDTH, timer } from "globals";
 import UserInterfaceElement from "./UserInterfaceElement.js";
 
 export default class ProgressBar extends UserInterfaceElement {

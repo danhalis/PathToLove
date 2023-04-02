@@ -1,17 +1,16 @@
-import { context, GROUND_LEVEL, CANVAS_WIDTH, TILE_SIZE, timer, STANDARD_CANVAS_WIDTH } from "globals.js";
-import Animation from "lib/Animation.js";
-import Sprite from "lib/Sprite.js"
-import Directions from "../enums/Directions.js";
-import StateMachine from "lib/StateMachine.js";
-import CharacterWalkingState from "../states/entity/character/CharacterWalkingState.js";
-import Entity from "./Entity.js";
-import Vector from "lib/Vector.js";
-import CharacterStandingStillState from "../states/entity/character/CharacterStandingStillState.js";
-import { isAABBCollision } from "lib/CollisionHelpers.js";
-import CharacterLyingDownState from "../states/entity/character/CharacterLyingDownState.js";
-import Flower from "../objects/Flower.js";
-import Object from "../objects/Object.js";
-import ConstraintBox from "lib/ConstraintBox.js";
+import { context, GROUND_LEVEL, CANVAS_WIDTH, TILE_SIZE, timer, STANDARD_CANVAS_WIDTH } from "globals";
+import Entity from "../Entity";
+import Vector from "lib/Vector";
+import { UpperBody } from "./UpperBody";
+import { LowerBody } from "./LowerBody";
+import Genders from "components/enums/Genders";
+import Directions from "components/enums/Directions";
+import StateMachine from "lib/StateMachine";
+import CharacterState from "components/states/entity/character/CharacterState";
+import CharacterWalkingState from "components/states/entity/character/CharacterWalkingState";
+import CharacterStandingStillState from "components/states/entity/character/CharacterStandingStillState";
+import CharacterLyingDownState from "components/states/entity/character/CharacterLyingDownState";
+import Flower from "components/objects/Flower";
 
 /**
  * Represents a character (male or female).
@@ -35,234 +34,30 @@ export default class Character extends Entity {
     static FALL_DISTANCE_FROM_STONE = CANVAS_WIDTH / (STANDARD_CANVAS_WIDTH / 5);
     static FLOWER_DROP_DISTANCE = CANVAS_WIDTH / (STANDARD_CANVAS_WIDTH / 30);
 
-    /**
-     * Represents the character's upper body.
-     */
-    static UpperBody = class UpperBody {
-
-        /**
-         * Represents the sprites of the character's upper body.
-         */
-        static UpperBodySprites = class UpperBodySprites {
-            /**
-             * Initializes a sprite holder for the character's upper body.
-             */
-            constructor() {
-                this.outlineSprites = null;
-				this.hairSprites = null;
-				this.skinSprites = null;
-				this.clothesSprites = null;
-            }
-
-            /**
-             * Sets sprites for upper body's outline
-             * 
-             * @param {Array<Sprite>} outlineSprites upper body's outline sprites.
-             */
-            setOutlineSprites(outlineSprites) {
-                this.outlineSprites = outlineSprites;
-            }
-
-            /**
-             * Sets sprites for upper body's hair
-             * 
-             * @param {Array<Sprite>} hairSprites upper body's hair sprites.
-             */
-            setHairSprites(hairSprites) {
-                this.hairSprites = hairSprites;
-            }
-
-            /** 
-             * Sets sprites for upper body's skin
-             * 
-             * @param {Array<Sprite>} skinSprites upper body's skin sprites.
-             */
-            setSkinSprites(skinSprites) {
-                this.skinSprites = skinSprites;
-            }
-
-            /** 
-             * Sets sprites for upper body's shirt
-             * 
-             * @param {Array<Sprite>} clothesSprites upper body's shirt sprites.
-             */
-            setClothesSprites(clothesSprites) {
-                this.clothesSprites = clothesSprites;
-            }
-        }
-
-        /**
-         * Initializes an upper body of the character.
-         * 
-         * @param {UpperBody.UpperBodySprites} sprites upper body's sprites.
-         * @param {Animation} animation upper body's animation.
-         */
-        constructor(sprites = null, animation = null) {
-            this.sprites = sprites;
-            this.animation = animation;
-        }
-
-        /**
-         * Sets sprites for upper body.
-         * 
-         * @param {UpperBody.UpperBodySprites} sprites upper body's sprites.
-         */
-        setSprites(sprites) {
-            this.sprites = sprites;
-        }
-
-        /**
-         * Sets animation for upper body.
-         * 
-         * @param {Animation} animation upper body's animation.
-         */
-        setAnimation(animation) {
-            this.animation = animation;
-        }
-
-        getAnimation() {
-            return this.animation;
-        }
-
-        update(dt) {
-            this.animation?.update(dt);
-        }
-
-        /**
-         * 
-         * @param {number} x x position in the canvas.
-         * @param {number} y y position in the canvas.
-         */
-        render(x, y, width = Character.RENDER_WIDTH, height = Character.RENDER_HEIGHT) {
-            if (this.animation == null) {
-                this.sprites.outlineSprites[0].render(x, y, width, height);
-                this.sprites.hairSprites[0].render(x, y, width, height);
-                this.sprites.skinSprites[0].render(x, y, width, height);
-                this.sprites.clothesSprites[0].render(x, y, width, height);
-            }
-            else {
-                this.sprites.outlineSprites[this.animation.getCurrentFrame()].render(x, y, width, height);
-                this.sprites.hairSprites[this.animation.getCurrentFrame()].render(x, y, width, height);
-                this.sprites.skinSprites[this.animation.getCurrentFrame()].render(x, y, width, height);
-                this.sprites.clothesSprites[this.animation.getCurrentFrame()].render(x, y, width, height);
-            }
-        }
-    }
-
-    /**
-     * Represents the character's lower body.
-     */
-    static LowerBody = class LowerBody {
-
-        /**
-         * Represents the sprites of the character's lower body.
-         */
-         static LowerBodySprites = class LowerBodySprites {
-            /**
-             * Initializes a sprite holder for the character's lower body.
-             */
-            constructor() {
-                this.outlineSprites = null;
-				this.clothesSprites = null;
-				this.skinSprites = null;
-				this.shoesSprites = null;
-            }
-
-            /**
-             * Sets sprites for lower body's outline
-             * 
-             * @param {Array<Sprite>} outlineSprites lower body's outline sprites.
-             */
-            setOutlineSprites(outlineSprites) {
-                this.outlineSprites = outlineSprites;
-            }
-
-            /**
-             * Sets sprites for lower body's shorts
-             * 
-             * @param {Array<Sprite>} clothesSprites lower body's shorts sprites.
-             */
-            setClothesSprites(clothesSprites) {
-                this.clothesSprites = clothesSprites;
-            }
-
-            /** 
-             * Sets sprites for lower body's skin
-             * 
-             * @param {Array<Sprite>} skinSprites lower body's skin sprites.
-             */
-            setSkinSprites(skinSprites) {
-                this.skinSprites = skinSprites;
-            }
-
-            /** 
-             * Sets sprites for lower body's shoes
-             * 
-             * @param {Array<Sprite>} shoesSprites lower body's shoes sprites.
-             */
-            setShoesSprites(shoesSprites) {
-                this.shoesSprites = shoesSprites;
-            }
-        }
-
-        /**
-         * Initializes a lower body of the character.
-         * 
-         * @param {Sprite} sprites 
-         * @param {Animation} animation 
-         */
-        constructor(sprites = null, animation = null) {
-            this.sprites = sprites;
-            this.animation = animation;
-        }
-
-        /**
-         * Sets sprites for lower body.
-         * 
-         * @param {LowerBody.LowerBodySprites} sprites lower body's sprites.
-         */
-        setSprites(sprites) {
-            this.sprites = sprites;
-        }
-
-        /**
-         * Sets animation for lower body.
-         * 
-         * @param {Animation} animation 
-         */
-        setAnimation(animation) {
-            this.animation = animation;
-        }
-
-        getAnimation() {
-            return this.animation;
-        }
-
-
-        update(dt) {
-            this.animation?.update(dt);
-        }
-
-        /**
-         * 
-         * @param {number} x x position in the canvas.
-         * @param {number} y y position in the canvas.
-         */
-        render(x, y, width = Character.RENDER_WIDTH, height = Character.RENDER_HEIGHT) {
-            if (this.animation == null) {
-                this.sprites.outlineSprites[0].render(x, y, width, height);
-                this.sprites.clothesSprites[0].render(x, y, width, height);
-                this.sprites.skinSprites[0].render(x, y, width, height);
-                this.sprites.shoesSprites[0].render(x, y, width, height);
-            }
-            else {
-                this.sprites.outlineSprites[this.animation.getCurrentFrame()].render(x, y, width, height);
-                this.sprites.clothesSprites[this.animation.getCurrentFrame()].render(x, y, width, height);
-                this.sprites.skinSprites[this.animation.getCurrentFrame()].render(x, y, width, height);
-                this.sprites.shoesSprites[this.animation.getCurrentFrame()].render(x, y, width, height);
-            }
-        }
-    }
+    gender: Genders;
+    hairColor: number;
+    skinColor: number;
+    upperClothesColor: number;
+    lowerClothesColor: number;
+    shoesColor: number;
+    direction: Directions;
+    upperBody: UpperBody;
+    lowerBody: LowerBody;
+    stateMachine: StateMachine;
+    states: CharacterState[];
+    isHoldingFlower: boolean;
+    didDropFlower: boolean;
+    flower: Flower;
+    isLyingDown: boolean;
+    leftRenderOffset: Vector;
+    rightRenderOffset: Vector;
+    isParalyzed: boolean;
+    position: Vector;
+    dimensions: Vector;
+    speedScalar: number;
+    isAutoMoving: boolean;
+    velocity: any;
+    velocityLimit: any;
     
     /**
      * Initializes a character.
@@ -275,7 +70,7 @@ export default class Character extends Entity {
      * @param {number} lowerClothesColor shorts/skirt color code.
      * @param {number} shoesColor shoes color code.
      */
-    constructor(dimensions, position, gender, hairColor, skinColor, upperClothesColor, lowerClothesColor, shoesColor) {
+    constructor(dimensions: Vector, position: Vector, gender, hairColor: number, skinColor: number, upperClothesColor: number, lowerClothesColor: number, shoesColor: number) {
         super(dimensions, position, Character.VELOCITY_LIMIT, Character.SPEED_SCALAR)
         
         this.gender = gender;
@@ -287,8 +82,8 @@ export default class Character extends Entity {
         this.shoesColor = shoesColor;
         this.direction = Directions.Right;
 
-        this.upperBody = new Character.UpperBody();
-        this.lowerBody = new Character.LowerBody();
+        this.upperBody = new UpperBody();
+        this.lowerBody = new LowerBody();
 
         this.stateMachine = new StateMachine();
         this.states = [
@@ -385,19 +180,19 @@ export default class Character extends Entity {
         this.stateMachine.render();
 
         if (this.didDropFlower) {
-            this.flower.render();
+            this.flower?.render();
         }
 
         if (this.direction === Directions.Left) {
-			context.save();
-			context.translate(
+			context?.save();
+			context?.translate(
                 Math.floor(this.position.x) + this.dimensions.x + this.leftRenderOffset.x, 
                 Math.floor(this.position.y) + this.leftRenderOffset.y
             );
-			context.scale(-1, 1);
+			context?.scale(-1, 1);
 			this.upperBody.render(0, 0, this.dimensions.x, this.dimensions.y);
             this.lowerBody.render(0, 0, this.dimensions.x, this.dimensions.y);
-			context.restore();
+			context?.restore();
 		}
 		else {
 			this.upperBody.render(
@@ -434,9 +229,9 @@ export default class Character extends Entity {
      * @param {Directions} toDirection 
      */
     enableAutoMove(toDirection) {
-        if (this.autoMoving) return;
+        if (this.isAutoMoving) return;
 
-        this.autoMoving = true;
+        this.isAutoMoving = true;
 
         if (toDirection == Directions.Left) {
             this.direction = Directions.Left;
@@ -447,14 +242,17 @@ export default class Character extends Entity {
 
         this.changeState(CharacterWalkingState.NAME);
     }
+    changeState(NAME: any) {
+        throw new Error("Method not implemented.");
+    }
 
     /**
      * Stops the character from auto-moving.
      */
     disableAutoMove() {
-        if (!this.autoMoving) return;
+        if (!this.isAutoMoving) return;
         
-        this.autoMoving = false;
+        this.isAutoMoving = false;
         this.stop();
         this.changeState(CharacterStandingStillState.NAME);
     }

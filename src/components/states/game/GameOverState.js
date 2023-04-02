@@ -1,6 +1,6 @@
-import State from "../../../lib/State.js";
+import State from "../../../lib/State.ts";
 import SoundNames from "../../enums/SoundNames.js";
-import { context, CANVAS_WIDTH, CANVAS_HEIGHT, STANDARD_CANVAS_WIDTH, keys, stateMachine, backGroundMusic, sounds } from "globals.js";
+import { context, CANVAS_WIDTH, CANVAS_HEIGHT, STANDARD_CANVAS_WIDTH, keys, stateMachine, backGroundMusic, sounds } from "globals";
 import TitleScreenState from "./TitleScreenState.js";
 
 export default class GameOverState extends State {

@@ -1,5 +1,5 @@
 import Animation from "../../../lib/Animation.js";
-import State from "../../../lib/State.js";
+import State from "../../../lib/State.ts";
 import Lock from "../../objects/Lock.js";
 
 export default class LockIdleState extends State {

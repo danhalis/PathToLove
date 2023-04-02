@@ -1,7 +1,7 @@
 import Sprite from "../../lib/Sprite.js";
 import Directions from "../enums/Directions.js";
 import ImageNames from "../enums/ImageNames.js";
-import { CANVAS_WIDTH, context, images } from "globals.js";
+import { CANVAS_WIDTH, context, images } from "globals";
 import Object from "./Object.js";
 
 export default class Flower extends Object {

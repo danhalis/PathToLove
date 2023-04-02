@@ -1,7 +1,7 @@
 import Sprite from "../../lib/Sprite.js";
 import Directions from "../enums/Directions.js";
 import ImageNames from "../enums/ImageNames.js";
-import { CANVAS_WIDTH, images, STANDARD_CANVAS_WIDTH, timer } from "globals.js";
+import { CANVAS_WIDTH, images, STANDARD_CANVAS_WIDTH, timer } from "globals";
 import Object from "./Object.js";
 
 export default class FriendZone extends Object {

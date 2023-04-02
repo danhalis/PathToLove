@@ -1,6 +1,6 @@
 import { isAABBCollision } from "../../lib/CollisionHelpers.js";
-import Vector from "../../lib/Vector.js";
-import { CANVAS_HEIGHT, CANVAS_WIDTH, context } from "globals.js";
+import Vector from "../../lib/Vector.ts";
+import { CANVAS_HEIGHT, CANVAS_WIDTH, context } from "globals";
 import Object from "./Object.js";
 
 export default class FrequencyBar extends Object {

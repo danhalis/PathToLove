@@ -1,5 +1,5 @@
 import Animation from "lib/Animation.js";
-import State from "lib/State.js";
+import State from "lib/State.ts";
 import LittleHeart from "../../../entities/LittleHeart.js";
 
 export default class LittleHeartBreakingState extends State {

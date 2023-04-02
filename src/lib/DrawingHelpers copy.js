@@ -1,4 +1,4 @@
-import { CANVAS_WIDTH, STANDARD_CANVAS_WIDTH } from "globals.js";
+import { CANVAS_WIDTH, STANDARD_CANVAS_WIDTH } from "globals";
 
 /**
  * Draws a rounded rectangle using the current state of the canvas.

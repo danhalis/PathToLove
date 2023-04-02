@@ -12,21 +12,12 @@ module.exports = {
   },
   entry: {
     main: {
-      import: path.resolve(__dirname, 'src/main.js'),
+      import: path.resolve(__dirname, 'src/main.ts'),
       dependOn: 'globals',
     },
     globals: {
-      import: path.resolve(__dirname, 'src/globals.js')
-    }
-    // index: {
-    //   import: path.resolve(__dirname, 'src/index.ts'),
-    //   dependOn: 'shared',
-    // },
-    // another: {
-    //   import: path.resolve(__dirname, 'src/another-module.ts'),
-    //   dependOn: 'shared',
-    // },
-    // shared: 'lodash',
+      import: path.resolve(__dirname, 'src/globals.ts')
+    },
   },
   optimization: {
     runtimeChunk: 'single', // create a single runtime bundle for all chunks
@@ -82,6 +73,10 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.ts$/,
+        use: 'ts-loader'
+      },
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'], // loaders are executed in reversed order

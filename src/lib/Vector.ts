@@ -1,16 +1,19 @@
 export default class Vector {
+	x: number;
+	y: number;
+
 	/**
 	 * A simple vector class that can add two vectors together.
 	 *
-	 * @param {Number} x
-	 * @param {Number} y
+	 * @param {number} x
+	 * @param {number} y
 	 */
-	constructor(x, y) {
+	constructor(x: number, y: number) {
 		this.x = x;
 		this.y = y;
 	}
 
-	add(vector, dt = 1) {
+	add(vector: Vector, dt = 1) {
 		this.x += vector.x * dt;
 		this.y += vector.y * dt;
 	}

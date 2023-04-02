@@ -1,7 +1,7 @@
 import Entity from "./Entity.js";
 import StateMachine from "../../lib/StateMachine.js";
 import LittleHeartMovingState from "../states/entity/little-heart/LittleHeartMoving.js";
-import { CANVAS_WIDTH, images, STANDARD_CANVAS_WIDTH, TILE_SIZE, timer } from "globals.js";
+import { CANVAS_WIDTH, images, STANDARD_CANVAS_WIDTH, TILE_SIZE, timer } from "globals";
 import ImageNames from "../enums/ImageNames.js";
 import Sprite from "../../lib/Sprite.js";
 import LittleHeartBreakingState from "../states/entity/little-heart/LittleHeartBreakingState.js";

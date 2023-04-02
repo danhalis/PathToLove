@@ -1,6 +1,6 @@
 import Directions from "../enums/Directions.js";
-import { context, DEBUG } from "globals.js";
-import Vector from "../../lib/Vector.js";
+import { context, DEBUG } from "globals";
+import Vector from "../../lib/Vector.ts";
 import { isAABBCollision } from "../../lib/CollisionHelpers.js";
 import Hitbox from "../../lib/Hitbox.js";
 import ConstraintBox from "../../lib/ConstraintBox.js";

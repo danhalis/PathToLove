@@ -1,7 +1,7 @@
 import Hitbox from "../../lib/Hitbox.js";
 import StateMachine from "../../lib/StateMachine.js";
-import Vector from "../../lib/Vector.js";
-import { CANVAS_WIDTH, images, STANDARD_CANVAS_WIDTH, timer } from "globals.js";
+import Vector from "../../lib/Vector.ts";
+import { CANVAS_WIDTH, images, STANDARD_CANVAS_WIDTH, timer } from "globals";
 import LockedHeartIdleState from "../states/entity/locked-heart/LockedHeartIdleState.js";
 import Entity from "./Entity.js";
 import Lock from "../objects/Lock.js";

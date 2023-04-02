@@ -1,11 +1,11 @@
-import State from "../../../lib/State.js";
-import Vector from "../../../lib/Vector.js";
-import Character from "../../entities/Character.js";
+import State from "../../../lib/State.ts";
+import Vector from "../../../lib/Vector.ts";
+import Character from "../../entities/character/Character.ts";
 import Female from "../../entities/Female.js";
 import Male from "../../entities/Male.js";
 import Genders from "../../enums/Genders.js";
 import SoundNames from "../../enums/SoundNames.js";
-import { context, CANVAS_WIDTH, CANVAS_HEIGHT, STANDARD_CANVAS_WIDTH, keys, stateMachine, GROUND_LEVEL, sounds } from "globals.js";
+import { context, CANVAS_WIDTH, CANVAS_HEIGHT, STANDARD_CANVAS_WIDTH, keys, stateMachine, GROUND_LEVEL, sounds } from "globals";
 import CustomizationManager from "../../services/CustomizationManager.js";
 import OpeningState from "./OpeningState.js";
 

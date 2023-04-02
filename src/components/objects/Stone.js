@@ -1,6 +1,6 @@
 import Sprite from "../../lib/Sprite.js";
 import ImageNames from "../enums/ImageNames.js";
-import { CANVAS_WIDTH, images, TILE_SIZE } from "globals.js";
+import { CANVAS_WIDTH, images, TILE_SIZE } from "globals";
 import Object from "./Object.js";
 
 export default class Stone extends Object {

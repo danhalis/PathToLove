@@ -1,9 +1,9 @@
 import Animation from "lib/Animation.js";
 import Sprite from "lib/Sprite.js";
-import State from "lib/State.js";
+import State from "lib/State.ts";
 import LittleHeart from "../../../entities/LittleHeart.js";
 import ImageNames from "../../../enums/ImageNames.js";
-import { images, TILE_SIZE } from "globals.js";
+import { images, TILE_SIZE } from "globals";
 
 export default class LittleHeartMovingState extends State {
 

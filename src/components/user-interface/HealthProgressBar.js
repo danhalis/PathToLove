@@ -1,4 +1,4 @@
-import { CANVAS_WIDTH } from "globals.js";
+import { CANVAS_WIDTH } from "globals";
 import ProgressBar from "./ProgressBar.js";
 
 export default class HealthProgressBar extends ProgressBar {

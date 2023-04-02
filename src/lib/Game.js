@@ -1,4 +1,4 @@
-import { timer } from "globals.js";
+import { timer } from "globals";
 import StateMachine from "./StateMachine.js";
 
 

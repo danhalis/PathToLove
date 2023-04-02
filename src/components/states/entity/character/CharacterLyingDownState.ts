@@ -1,27 +1,31 @@
-import { images, keys, TILE_SIZE } from "globals.js";
-import State from "lib/State.js";
+import { images, keys, TILE_SIZE } from "globals";
+import State from "lib/State";
 import ImageNames from "../../../enums/ImageNames.js";
-import Sprite from "lib/Sprite.js";
-import Character from "../../../entities/Character.js";
-import CharacterWalkingState from "./CharacterWalkingState.js";
+import Sprite from "lib/Sprite";
+import Character from "components/entities/character/Character";
 import Genders from "../../../enums/Genders.js";
+import CharacterState from "./CharacterState";
+import { UpperBodySprites } from "components/entities/character/UpperBody";
+import { LowerBodySprites } from "components/entities/character/LowerBody";
 
-export default class CharacterLyingDownState extends State {
+export default class CharacterLyingDownState extends CharacterState {
+
+  static readonly NAME = "character-lying-down";
+	name: string;
 	
-    static NAME = "character-lying-down";
+	upperBodySprites?: UpperBodySprites;
+	lowerBodySprites?: LowerBodySprites;
 
 	/**
 	 * Initializes a lying down state of the charater. 
 	 *
 	 * @param {Character} character character.
 	 */
-	constructor(character) {
-		super();
+	constructor(character: Character) {
+		super(character);
 
-        this.name = CharacterLyingDownState.NAME;
+		this.name = CharacterLyingDownState.NAME;
 		this.character = character;
-		this.upperBodySprites = null;
-		this.lowerBodySprites = null;
 	}
 
 	enter() {
@@ -52,7 +56,7 @@ export default class CharacterLyingDownState extends State {
 		}
 
 		// generate outline sprites
-		let outlineSprites = [];
+		let outlineSprites: Sprite[] = [];
 		outlineSprites.push(new Sprite(
 			images.get(imageName),
 			0,
@@ -62,7 +66,7 @@ export default class CharacterLyingDownState extends State {
 		));
 
 		// generate hair sprites
-		let hairSprites = [];
+		let hairSprites: Sprite[] = [];
 		hairSprites.push(new Sprite(
 			images.get(imageName),
 			0,
@@ -72,7 +76,7 @@ export default class CharacterLyingDownState extends State {
 		));
 
 		// generate skin sprites
-		let skinSprites = [];
+		let skinSprites: Sprite[] = [];
 		skinSprites.push(new Sprite(
 			images.get(imageName),
 			0,
@@ -82,7 +86,7 @@ export default class CharacterLyingDownState extends State {
 		));
 
 		// generate shirt/blouse sprites
-		let clothesSprites = [];
+		let clothesSprites: Sprite[] = [];
 		clothesSprites.push(new Sprite(
 			images.get(imageName),
 			0,
@@ -91,11 +95,12 @@ export default class CharacterLyingDownState extends State {
 			TILE_SIZE
 		));
 
-		this.upperBodySprites = new Character.UpperBody.UpperBodySprites();
-		this.upperBodySprites.setOutlineSprites(outlineSprites);
-		this.upperBodySprites.setHairSprites(hairSprites);
-		this.upperBodySprites.setSkinSprites(skinSprites);
-		this.upperBodySprites.setClothesSprites(clothesSprites);
+		this.upperBodySprites = new UpperBodySprites({
+			outlineSprites,
+			hairSprites,
+			skinSprites,
+      clothesSprites,
+		});
 
 		return this.upperBodySprites;
 	}
@@ -119,8 +124,8 @@ export default class CharacterLyingDownState extends State {
 			imageName = ImageNames.FemaleLyingDownLowerBody;
 		}
 
-        // generate outline sprites
-        let outlineSprites = [];
+		// generate outline sprites
+		let outlineSprites: Sprite[] = [];
 		outlineSprites.push(new Sprite(
 			images.get(imageName),
 			0,
@@ -129,8 +134,8 @@ export default class CharacterLyingDownState extends State {
 			TILE_SIZE
 		));
 
-        // generate shorts/skirt sprites
-        let clothesSprites = [];
+		// generate shorts/skirt sprites
+		let clothesSprites: Sprite[] = [];
 		clothesSprites.push(new Sprite(
 			images.get(imageName),
 			0,
@@ -139,8 +144,8 @@ export default class CharacterLyingDownState extends State {
 			TILE_SIZE
 		));
 
-        // generate skin sprites
-        let skinSprites = [];
+		// generate skin sprites
+		let skinSprites: Sprite[] = [];
 		skinSprites.push(new Sprite(
 			images.get(imageName),
 			0,
@@ -150,7 +155,7 @@ export default class CharacterLyingDownState extends State {
 		));
 
 		// generate shoes sprites
-        let shoesSprites = [];
+		let shoesSprites: Sprite[] = [];
 		shoesSprites.push(new Sprite(
 			images.get(imageName),
 			0,
@@ -159,15 +164,19 @@ export default class CharacterLyingDownState extends State {
 			TILE_SIZE
 		));
 
-		this.lowerBodySprites = new Character.LowerBody.LowerBodySprites();
-		this.lowerBodySprites.setOutlineSprites(outlineSprites);
-		this.lowerBodySprites.setClothesSprites(clothesSprites);
-		this.lowerBodySprites.setSkinSprites(skinSprites);
-		this.lowerBodySprites.setShoesSprites(shoesSprites);
+		this.lowerBodySprites = new LowerBodySprites({
+			outlineSprites,
+      clothesSprites,
+      skinSprites,
+      shoesSprites,
+		});
 
 		return this.lowerBodySprites;
 	}
 
 	update(dt) {
+	}
+
+	render(): void {
 	}
 }

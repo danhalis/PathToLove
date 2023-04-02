@@ -6,10 +6,13 @@ import Character from "../../../entities/character/Character.ts";
 import CharacterWalkingState from "./CharacterWalkingState.js";
 import Genders from "../../../enums/Genders.js";
 import Animation from "lib/Animation.js";
+import CharacterState from "./CharacterState";
+import { UpperBodySprites } from "components/entities/character/UpperBody";
+import { LowerBodySprites } from "components/entities/character/LowerBody";
 
-export default class CharacterStandingStillState extends State {
+export default class CharacterStandingStillState extends CharacterState {
 	
-    static NAME = "character-standing-still";
+	static NAME = "character-standing-still";
 
 	static STANDING_STILL_UPPER_BODY_ANIMATION_FRAMES = [0, 1];
 	static STANDING_STILL_UPPER_BODY_ANIMATION_INTERVAL = 0.3;
@@ -20,10 +23,10 @@ export default class CharacterStandingStillState extends State {
 	 * @param {Character} character character.
 	 */
 	constructor(character) {
-		super();
+		super(character);
 
-        this.name = CharacterStandingStillState.NAME;
-		this.character = character;
+		this.name = CharacterStandingStillState.NAME;
+
 		this.upperBodySprites = null;
 		this.lowerBodySprites = null;
 	}
@@ -112,11 +115,12 @@ export default class CharacterStandingStillState extends State {
 			));
 		}
 
-		this.upperBodySprites = new Character.UpperBody.UpperBodySprites();
-		this.upperBodySprites.setOutlineSprites(outlineSprites);
-		this.upperBodySprites.setHairSprites(hairSprites);
-		this.upperBodySprites.setSkinSprites(skinSprites);
-		this.upperBodySprites.setClothesSprites(clothesSprites);
+		this.upperBodySprites = new UpperBodySprites({
+			outlineSprites,
+			hairSprites,
+			skinSprites,
+      clothesSprites,
+		});
 
 		return this.upperBodySprites;
 	}
@@ -140,8 +144,8 @@ export default class CharacterStandingStillState extends State {
 			imageName = ImageNames.FemaleStandingStillLowerBody;
 		}
 
-        // generate outline sprites
-        let outlineSprites = [];
+		// generate outline sprites
+		let outlineSprites = [];
 		for (let i = 0; i < 2; i++) {
 			outlineSprites.push(new Sprite(
 				images.get(imageName),
@@ -152,47 +156,48 @@ export default class CharacterStandingStillState extends State {
 			));
 		}
 
-        // generate shorts/skirt sprites
-        let clothesSprites = [];
-        for (let i = 0; i < 2; i++) {
-            clothesSprites.push(new Sprite(
-                images.get(imageName),
-                i * TILE_SIZE,
-                (1 + this.character.lowerClothesColor) * TILE_SIZE * 2,
-                TILE_SIZE,
-                TILE_SIZE * 2,
-            ));
-        }
+		// generate shorts/skirt sprites
+		let clothesSprites = [];
+		for (let i = 0; i < 2; i++) {
+				clothesSprites.push(new Sprite(
+						images.get(imageName),
+						i * TILE_SIZE,
+						(1 + this.character.lowerClothesColor) * TILE_SIZE * 2,
+						TILE_SIZE,
+						TILE_SIZE * 2,
+				));
+		}
 
-        // generate skin sprites
-        let skinSprites = [];
-        for (let i = 0; i < 2; i++) {
-            skinSprites.push(new Sprite(
-                images.get(imageName),
-                i * TILE_SIZE,
-                (4 + this.character.skinColor) * TILE_SIZE * 2,
-                TILE_SIZE,
-                TILE_SIZE * 2,
-            ));
-        }
+		// generate skin sprites
+		let skinSprites = [];
+		for (let i = 0; i < 2; i++) {
+				skinSprites.push(new Sprite(
+						images.get(imageName),
+						i * TILE_SIZE,
+						(4 + this.character.skinColor) * TILE_SIZE * 2,
+						TILE_SIZE,
+						TILE_SIZE * 2,
+				));
+		}
 
 		// generate shoes sprites
-        let shoesSprites = [];
-        for (let i = 0; i < 2; i++) {
-            shoesSprites.push(new Sprite(
-                images.get(imageName),
-                i * TILE_SIZE,
-                (7 + this.character.shoesColor) * TILE_SIZE * 2,
-                TILE_SIZE,
-                TILE_SIZE * 2,
-            ));
-        }
+		let shoesSprites = [];
+		for (let i = 0; i < 2; i++) {
+				shoesSprites.push(new Sprite(
+						images.get(imageName),
+						i * TILE_SIZE,
+						(7 + this.character.shoesColor) * TILE_SIZE * 2,
+						TILE_SIZE,
+						TILE_SIZE * 2,
+				));
+		}
 
-		this.lowerBodySprites = new Character.LowerBody.LowerBodySprites();
-		this.lowerBodySprites.setOutlineSprites(outlineSprites);
-		this.lowerBodySprites.setClothesSprites(clothesSprites);
-		this.lowerBodySprites.setSkinSprites(skinSprites);
-		this.lowerBodySprites.setShoesSprites(shoesSprites);
+		this.lowerBodySprites = new LowerBodySprites({
+			outlineSprites,
+			clothesSprites,
+			skinSprites,
+			shoesSprites,
+		});
 
 		return this.lowerBodySprites;
 	}

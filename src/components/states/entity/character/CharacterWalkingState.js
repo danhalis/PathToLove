@@ -7,10 +7,13 @@ import Character from "../../../entities/character/Character.ts";
 import CharacterStandingStillState from "./CharacterStandingStillState.js";
 import Genders from "../../../enums/Genders.js";
 import Directions from "../../../enums/Directions.js";
+import CharacterState from "./CharacterState";
+import { UpperBodySprites } from "components/entities/character/UpperBody";
+import { LowerBodySprites } from "components/entities/character/LowerBody";
 
-export default class CharacterWalkingState extends State {
+export default class CharacterWalkingState extends CharacterState {
 
-    static NAME = "character-walking";
+	static NAME = "character-walking";
 
 	static WALKING_UPPER_BODY_ANIMATION_FRAMES = [0, 1];
 	static WALKING_UPPER_BODY_ANIMATION_INTERVAL = 0.3;
@@ -23,11 +26,10 @@ export default class CharacterWalkingState extends State {
 	 * @param {Character} character character.
 	 */
 	constructor(character) {
-		super();
+		super(character);
 
-        this.name = CharacterWalkingState.NAME;
+		this.name = CharacterWalkingState.NAME;
 
-		this.character = character;
 		this.upperBodySprites = null;
 		this.lowerBodySprites = null;
 	}
@@ -83,11 +85,12 @@ export default class CharacterWalkingState extends State {
 		// generate shirt/blouse sprites
 		let clothesSprites = this.getUpperClothesSprites(imageName);
 
-		this.upperBodySprites = new Character.UpperBody.UpperBodySprites();
-		this.upperBodySprites.setOutlineSprites(outlineSprites);
-		this.upperBodySprites.setHairSprites(hairSprites);
-		this.upperBodySprites.setSkinSprites(skinSprites);
-		this.upperBodySprites.setClothesSprites(clothesSprites);
+		this.upperBodySprites = new UpperBodySprites({
+			outlineSprites,
+			hairSprites,
+			skinSprites,
+      clothesSprites,
+		});
 
 		return this.upperBodySprites;
 	}
@@ -202,23 +205,24 @@ export default class CharacterWalkingState extends State {
 			imageName = ImageNames.FemaleWalkingLowerBody;
 		}
 
-        // generate outline sprites
-        let outlineSprites = this.getLowerOutlineSprites(imageName);
+		// generate outline sprites
+		let outlineSprites = this.getLowerOutlineSprites(imageName);
 
-        // generate shorts/skirt sprites
-        let clothesSprites = this.getLowerClothesSprites(imageName);
+		// generate shorts/skirt sprites
+		let clothesSprites = this.getLowerClothesSprites(imageName);
 
-        // generate skin sprites
-        let skinSprites = this.getLowerSkinSprites(imageName);
+		// generate skin sprites
+		let skinSprites = this.getLowerSkinSprites(imageName);
 
 		// generate shoes sprites
-        let shoesSprites = this.getShoesSprites(imageName);
+		let shoesSprites = this.getShoesSprites(imageName);
 
-		this.lowerBodySprites = new Character.LowerBody.LowerBodySprites();
-		this.lowerBodySprites.setOutlineSprites(outlineSprites);
-		this.lowerBodySprites.setClothesSprites(clothesSprites);
-		this.lowerBodySprites.setSkinSprites(skinSprites);
-		this.lowerBodySprites.setShoesSprites(shoesSprites);
+		this.lowerBodySprites = new LowerBodySprites({
+			outlineSprites,
+      clothesSprites,
+      skinSprites,
+      shoesSprites,
+		});
 
 		return this.lowerBodySprites;
 	}

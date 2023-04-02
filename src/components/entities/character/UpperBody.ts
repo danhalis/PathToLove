@@ -1,12 +1,11 @@
-import Entity from "../Entity.js";
 import Character from "./Character";
-import Sprite from "lib/Sprite.js"
-import Animation from "lib/Animation.js";
+import Sprite from "lib/Sprite"
+import Animation from "lib/Animation";
 
 /**
  * Represents the character's upper body.
  */
-export class UpperBody extends Entity {
+export class UpperBody {
 
   sprites?: UpperBodySprites;
   animation?: Animation;
@@ -21,7 +20,6 @@ export class UpperBody extends Entity {
     sprites?: UpperBodySprites,
     animation?: Animation
   ) {
-    super();
     this.sprites = sprites;
     this.animation = animation;
   }
@@ -49,7 +47,7 @@ export class UpperBody extends Entity {
   }
 
   update(dt: number) {
-      this.animation.update(dt);
+      this.animation?.update(dt);
   }
 
   /**

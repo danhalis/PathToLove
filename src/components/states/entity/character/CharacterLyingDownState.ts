@@ -25,7 +25,6 @@ export default class CharacterLyingDownState extends CharacterState {
 		super(character);
 
 		this.name = CharacterLyingDownState.NAME;
-		this.character = character;
 	}
 
 	enter() {
@@ -172,11 +171,5 @@ export default class CharacterLyingDownState extends CharacterState {
 		});
 
 		return this.lowerBodySprites;
-	}
-
-	update(dt) {
-	}
-
-	render(): void {
 	}
 }

@@ -1,12 +1,11 @@
-import Entity from "../Entity.js";
 import Character from "./Character";
-import Sprite from "lib/Sprite.js"
-import Animation from "lib/Animation.js";
+import Sprite from "lib/Sprite"
+import Animation from "lib/Animation";
 
 /**
  * Represents the character's lower body.
  */
-export class LowerBody extends Entity {
+export class LowerBody {
 
   sprites?: LowerBodySprites;
   animation?: Animation;
@@ -21,7 +20,6 @@ export class LowerBody extends Entity {
     sprites?: LowerBodySprites,
     animation?: Animation
   ) {
-    super();
     this.sprites = sprites;
     this.animation = animation;
   }

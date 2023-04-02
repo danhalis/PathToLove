@@ -1,10 +1,10 @@
-export default abstract class State {
+export default class State {
 
 	enter(parameters) {}
 
 	exit() {}
 
-	abstract update(dt: number): void;
+	update(dt: number) {}
 
-	abstract render(): void;
+	render() {}
 }

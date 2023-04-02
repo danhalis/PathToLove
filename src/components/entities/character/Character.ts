@@ -240,10 +240,7 @@ export default class Character extends Entity {
             this.direction = Directions.Right;
         }
 
-        this.changeState(CharacterWalkingState.NAME);
-    }
-    changeState(NAME: any) {
-        throw new Error("Method not implemented.");
+        super.changeState(CharacterWalkingState.NAME);
     }
 
     /**
@@ -254,7 +251,7 @@ export default class Character extends Entity {
         
         this.isAutoMoving = false;
         this.stop();
-        this.changeState(CharacterStandingStillState.NAME);
+        super.changeState(CharacterStandingStillState.NAME);
     }
 
     moveLeft() {
@@ -269,7 +266,7 @@ export default class Character extends Entity {
 
 	stop() {
 		this.velocity.x = 0;
-        this.changeState(CharacterStandingStillState.NAME);
+        super.changeState(CharacterStandingStillState.NAME);
 	}
 
     holdFlower() {
@@ -328,7 +325,7 @@ export default class Character extends Entity {
         
         this.setRenderOffset(CharacterLyingDownState.NAME);
 
-        this.changeState(CharacterLyingDownState.NAME);
+        super.changeState(CharacterLyingDownState.NAME);
 
         this.onFall();
     }
@@ -351,6 +348,6 @@ export default class Character extends Entity {
 
         this.setRenderOffset(CharacterStandingStillState.NAME);
 
-        this.changeState(CharacterStandingStillState.NAME);
+        super.changeState(CharacterStandingStillState.NAME);
     }
 }

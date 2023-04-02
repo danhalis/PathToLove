@@ -40,6 +40,7 @@ export default class StateMachine {
 	}
 
 	render(context) {
+		console.log(this.currentState);
 		this.currentState.render(context);
 	}
 }

@@ -6,7 +6,7 @@ import { CANVAS_WIDTH, keys, sounds, STANDARD_CANVAS_WIDTH, timer } from "global
 import HeartCryingState from "../states/entity/heart/HeartCryingState.js";
 import HeartIdleState from "../states/entity/heart/HeartIdleState.js";
 import HeartShootingState from "../states/entity/heart/HeartShooting.js";
-import Entity from "./Entity.js";
+import Entity from "./Entity";
 import LittleHeartFactory from "./factories/LittleHeartFactory.js";
 
 export default class Heart extends Entity {

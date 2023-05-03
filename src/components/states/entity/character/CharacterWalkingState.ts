@@ -1,10 +1,10 @@
 import { images, keys, TILE_SIZE, timer } from "globals";
-import State from "lib/State.ts";
+import State from "lib/State";
 import ImageNames from "../../../enums/ImageNames.js";
 import Sprite from "lib/Sprite.js";
 import Animation from "lib/Animation.js";
-import Character from "../../../entities/character/Character.ts";
-import CharacterStandingStillState from "./CharacterStandingStillState.js";
+import Character from "components/entities/character/Character";
+import CharacterStandingStillState from "./CharacterStandingStillState";
 import Genders from "../../../enums/Genders.js";
 import Directions from "../../../enums/Directions.js";
 import CharacterState from "./CharacterState";
@@ -20,18 +20,20 @@ export default class CharacterWalkingState extends CharacterState {
 	static WALKING_LOWER_BODY_ANIMATION_FRAMES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 	static WALKING_LOWER_BODY_ANIMATION_INTERVAL = 0.09;
 
+	name: string;
+
+	upperBodySprites?: UpperBodySprites;
+	lowerBodySprites?: LowerBodySprites;
+
 	/**
 	 * Initializes a walking state of the charater. 
 	 *
 	 * @param {Character} character character.
 	 */
-	constructor(character) {
+	constructor(character: Character) {
 		super(character);
 
 		this.name = CharacterWalkingState.NAME;
-
-		this.upperBodySprites = null;
-		this.lowerBodySprites = null;
 	}
 
 	enter() {
@@ -97,7 +99,7 @@ export default class CharacterWalkingState extends CharacterState {
 
 	getUpperOutlineSprites(imageName) {
 
-		let outlineSprites = [];
+		let outlineSprites: Sprite[] = [];
 		for (let i = 0; i < CharacterWalkingState.WALKING_UPPER_BODY_ANIMATION_FRAMES.length; i++) {
 			outlineSprites.push(new Sprite(
 				images.get(imageName),
@@ -122,7 +124,7 @@ export default class CharacterWalkingState extends CharacterState {
 			}
 		}
 
-		let hairSprites = [];
+		let hairSprites: Sprite[] = [];
 		for (let i = 0; i < CharacterWalkingState.WALKING_UPPER_BODY_ANIMATION_FRAMES.length; i++) {
 			hairSprites.push(new Sprite(
 				images.get(imageName),
@@ -147,7 +149,7 @@ export default class CharacterWalkingState extends CharacterState {
 			}
 		}
 
-		let skinSprites = [];
+		let skinSprites: Sprite[] = [];
 		for (let i = 0; i < CharacterWalkingState.WALKING_UPPER_BODY_ANIMATION_FRAMES.length; i++) {
 			skinSprites.push(new Sprite(
 				images.get(imageName),
@@ -172,7 +174,7 @@ export default class CharacterWalkingState extends CharacterState {
 			}
 		}
 
-		let clothesSprites = [];
+		let clothesSprites: Sprite[] = [];
 		for (let i = 0; i < CharacterWalkingState.WALKING_UPPER_BODY_ANIMATION_FRAMES.length; i++) {
 			clothesSprites.push(new Sprite(
 				images.get(imageName),
@@ -229,7 +231,7 @@ export default class CharacterWalkingState extends CharacterState {
 
 	getLowerOutlineSprites(imageName) {
 
-		let outlineSprites = [];
+		let outlineSprites: Sprite[] = [];
 		for (let i = 0; i < CharacterWalkingState.WALKING_LOWER_BODY_ANIMATION_FRAMES.length; i++) {
 			outlineSprites.push(new Sprite(
 				images.get(imageName),
@@ -254,7 +256,7 @@ export default class CharacterWalkingState extends CharacterState {
 			}
 		}
 
-		let clothesSprites = [];
+		let clothesSprites: Sprite[] = [];
         for (let i = 0; i < CharacterWalkingState.WALKING_LOWER_BODY_ANIMATION_FRAMES.length; i++) {
             clothesSprites.push(new Sprite(
                 images.get(imageName),
@@ -279,7 +281,7 @@ export default class CharacterWalkingState extends CharacterState {
 			}
 		}
 
-		let skinSprites = [];
+		let skinSprites: Sprite[] = [];
         for (let i = 0; i < CharacterWalkingState.WALKING_LOWER_BODY_ANIMATION_FRAMES.length; i++) {
             skinSprites.push(new Sprite(
                 images.get(imageName),
@@ -304,7 +306,7 @@ export default class CharacterWalkingState extends CharacterState {
 			}
 		}
 
-		let shoesSprites = [];
+		let shoesSprites: Sprite[] = [];
         for (let i = 0; i < CharacterWalkingState.WALKING_LOWER_BODY_ANIMATION_FRAMES.length; i++) {
             shoesSprites.push(new Sprite(
                 images.get(imageName),

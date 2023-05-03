@@ -1,9 +1,8 @@
 import { images, keys, TILE_SIZE } from "globals";
-import State from "lib/State.ts";
 import ImageNames from "../../../enums/ImageNames.js";
 import Sprite from "lib/Sprite.js";
-import Character from "../../../entities/character/Character.ts";
-import CharacterWalkingState from "./CharacterWalkingState.js";
+import Character from "components/entities/character/Character";
+import CharacterWalkingState from "./CharacterWalkingState";
 import Genders from "../../../enums/Genders.js";
 import Animation from "lib/Animation.js";
 import CharacterState from "./CharacterState";
@@ -17,18 +16,20 @@ export default class CharacterStandingStillState extends CharacterState {
 	static STANDING_STILL_UPPER_BODY_ANIMATION_FRAMES = [0, 1];
 	static STANDING_STILL_UPPER_BODY_ANIMATION_INTERVAL = 0.3;
 
+	name: string;
+	
+	upperBodySprites?: UpperBodySprites;
+	lowerBodySprites?: LowerBodySprites;
+
 	/**
 	 * Initializes a standing still state of the charater. 
 	 *
 	 * @param {Character} character character.
 	 */
-	constructor(character) {
+	constructor(character: Character) {
 		super(character);
 
 		this.name = CharacterStandingStillState.NAME;
-
-		this.upperBodySprites = null;
-		this.lowerBodySprites = null;
 	}
 
 	enter() {
@@ -68,7 +69,7 @@ export default class CharacterStandingStillState extends CharacterState {
 		}
 
 		// generate outline sprites
-		let outlineSprites = [];
+		let outlineSprites: Sprite[] = [];
 		for (let i = 0; i < 2; i++) {
 			outlineSprites.push(new Sprite(
 				images.get(imageName),
@@ -80,7 +81,7 @@ export default class CharacterStandingStillState extends CharacterState {
 		}
 
 		// generate hair sprites
-		let hairSprites = [];
+		let hairSprites: Sprite[] = [];
 		for (let i = 0; i < 2; i++) {
 			hairSprites.push(new Sprite(
 				images.get(imageName),
@@ -92,7 +93,7 @@ export default class CharacterStandingStillState extends CharacterState {
 		}
 
 		// generate skin sprites
-		let skinSprites = [];
+		let skinSprites: Sprite[] = [];
 		for (let i = 0; i < 2; i++) {
 			skinSprites.push(new Sprite(
 				images.get(imageName),
@@ -104,7 +105,7 @@ export default class CharacterStandingStillState extends CharacterState {
 		}
 
 		// generate shirt/blouse sprites
-		let clothesSprites = [];
+		let clothesSprites: Sprite[] = [];
 		for (let i = 0; i < 2; i++) {
 		clothesSprites.push(new Sprite(
 				images.get(imageName),
@@ -145,7 +146,7 @@ export default class CharacterStandingStillState extends CharacterState {
 		}
 
 		// generate outline sprites
-		let outlineSprites = [];
+		let outlineSprites: Sprite[] = [];
 		for (let i = 0; i < 2; i++) {
 			outlineSprites.push(new Sprite(
 				images.get(imageName),
@@ -157,7 +158,7 @@ export default class CharacterStandingStillState extends CharacterState {
 		}
 
 		// generate shorts/skirt sprites
-		let clothesSprites = [];
+		let clothesSprites: Sprite[] = [];
 		for (let i = 0; i < 2; i++) {
 				clothesSprites.push(new Sprite(
 						images.get(imageName),
@@ -169,7 +170,7 @@ export default class CharacterStandingStillState extends CharacterState {
 		}
 
 		// generate skin sprites
-		let skinSprites = [];
+		let skinSprites: Sprite[] = [];
 		for (let i = 0; i < 2; i++) {
 				skinSprites.push(new Sprite(
 						images.get(imageName),
@@ -181,7 +182,7 @@ export default class CharacterStandingStillState extends CharacterState {
 		}
 
 		// generate shoes sprites
-		let shoesSprites = [];
+		let shoesSprites: Sprite[] = [];
 		for (let i = 0; i < 2; i++) {
 				shoesSprites.push(new Sprite(
 						images.get(imageName),
@@ -203,7 +204,7 @@ export default class CharacterStandingStillState extends CharacterState {
 	}
 
 	update(dt) {
-        if (keys.a) {
+		if (keys.a) {
 
 			if (this.character.checkLeftConstraintBox()) {
 				return;

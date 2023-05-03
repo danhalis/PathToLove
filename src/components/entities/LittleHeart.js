@@ -1,4 +1,4 @@
-import Entity from "./Entity.js";
+import Entity from "./Entity";
 import StateMachine from "../../lib/StateMachine.js";
 import LittleHeartMovingState from "../states/entity/little-heart/LittleHeartMoving.js";
 import { CANVAS_WIDTH, images, STANDARD_CANVAS_WIDTH, TILE_SIZE, timer } from "globals";

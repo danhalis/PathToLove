@@ -16,7 +16,6 @@ import Character from "../../entities/character/Character.ts";
 import Male from "../../entities/Male.js";
 import Genders from "../../enums/Genders.js";
 import Female from "../../entities/Female.js";
-import CharacterWalkingState from "../entity/character/CharacterWalkingState.js";
 import Directions from "../../enums/Directions.js";
 import MaleColors from "../../enums/MaleColors.js";
 import FemaleColors from "../../enums/FemaleColors.js";

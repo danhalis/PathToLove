@@ -1,12 +1,38 @@
 import Directions from "../enums/Directions.js";
 import { context, DEBUG } from "globals";
-import Vector from "../../lib/Vector.ts";
+import Vector from "lib/Vector";
+import Sprite from "lib/Sprite";
+import Animation from "lib/Animation";
+import StateMachine from "lib/StateMachine";
 import { isAABBCollision } from "../../lib/CollisionHelpers.js";
-import Hitbox from "../../lib/Hitbox.js";
-import ConstraintBox from "../../lib/ConstraintBox.js";
+import Hitbox from "lib/Hitbox";
+import ConstraintBox from "lib/ConstraintBox";
 import Object from "../objects/Object.js";
 
 export default class Entity {
+	dimensions: any;
+	hitboxes: Hitbox[];
+	useDefaultHitbox: boolean;
+	position: any;
+	velocity: Vector;
+	velocityLimit: any;
+	speedScalar: any;
+	direction: any;
+	sprites: Sprite[];
+	isHidden: boolean;
+	renderAlpha: number;
+	isParalyzed: boolean;
+	isDisable: boolean;
+	currentAnimation: Animation;
+	stateMachine: StateMachine;
+	cleanUp: boolean;
+	constraintBox: ConstraintBox;
+	collidableEntities: Entity[];
+	collidableObjects: Object[];
+	health: number;
+	damage: number;
+	isDead: any;
+
 	/**
 	 * The base class to be extended by all entities in the game.
 	 *
@@ -36,7 +62,7 @@ export default class Entity {
 		this.isDisable = false;
 
 		this.currentAnimation = null;
-		this.stateMachine = null;
+		this.stateMachine = new StateMachine();
 		this.cleanUp = false;
 
 		this.constraintBox = null;
@@ -64,7 +90,7 @@ export default class Entity {
 		this.currentAnimation = animation;
 	}
 
-	changeState(state, params) {
+	changeState(state, params?) {
 		this.stateMachine.change(state, params);
 	}
 
@@ -92,8 +118,8 @@ export default class Entity {
 	render() {
 		if (this.isHidden) return;
 
-		context.save();
-		context.globalAlpha = this.renderAlpha;
+		context!.save();
+		context!.globalAlpha = this.renderAlpha;
 
 		this.stateMachine.render();
 
@@ -102,7 +128,7 @@ export default class Entity {
 		}
 
 		this.renderEntity();
-		context.restore();
+		context!.restore();
 
 		if (DEBUG) this.renderHitboxes();
 	}
@@ -120,11 +146,11 @@ export default class Entity {
 	renderEntity() {
 
 		if (this.direction === Directions.Left) {
-			context.save();
-			context.translate(Math.floor(this.position.x) + this.dimensions.x, Math.floor(this.position.y));
-			context.scale(-1, 1);
+			context!.save();
+			context!.translate(Math.floor(this.position.x) + this.dimensions.x, Math.floor(this.position.y));
+			context!.scale(-1, 1);
 			this.sprites[this.currentAnimation.getCurrentFrame()].render(0, 0, this.dimensions.x, this.dimensions.y);
-			context.restore();
+			context!.restore();
 		}
 		else {
 			this.sprites[this.currentAnimation.getCurrentFrame()].render(Math.floor(this.position.x), Math.floor(this.position.y), this.dimensions.x, this.dimensions.y);
@@ -143,7 +169,7 @@ export default class Entity {
 	 * Makes the given entity not collidable.
 	 * @param {Entity} entity 
 	 */
-	removeCollidableObject(entity) {
+	removeCollidableEntity(entity) {
 		this.collidableEntities = this.collidableEntities.filter(e => e != entity);
 	}
 	

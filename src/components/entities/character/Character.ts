@@ -1,5 +1,5 @@
 import { context, GROUND_LEVEL, CANVAS_WIDTH, TILE_SIZE, timer, STANDARD_CANVAS_WIDTH } from "globals";
-import Entity from "../Entity";
+import Entity from "components/entities/Entity";
 import Vector from "lib/Vector";
 import { UpperBody } from "./UpperBody";
 import { LowerBody } from "./LowerBody";
@@ -85,7 +85,7 @@ export default class Character extends Entity {
         this.upperBody = new UpperBody();
         this.lowerBody = new LowerBody();
 
-        this.stateMachine = new StateMachine();
+        
         this.states = [
             new CharacterStandingStillState(this),
             new CharacterWalkingState(this),

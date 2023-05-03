@@ -4,8 +4,8 @@ import Vector from "../../lib/Vector.ts";
 import FemaleColors from "../enums/FemaleColors.js";
 import Directions from "../enums/Directions.js";
 import { context, TILE_SIZE } from "globals";
-import CharacterStandingStillState from "../states/entity/character/CharacterStandingStillState.js";
-import CharacterLyingDownState from "../states/entity/character/CharacterLyingDownState";
+import CharacterStandingStillState from "components/states/entity/character/CharacterStandingStillState";
+import CharacterLyingDownState from "components/states/entity/character/CharacterLyingDownState";
 
 export default class Female extends Character {
 

@@ -1,7 +1,7 @@
 import Directions from "../enums/Directions.js";
 import { context, DEBUG } from "globals";
 import Vector from "../../lib/Vector.ts";
-import Entity from "../entities/Entity.js";
+import Entity from "../entities/Entity";
 import { isAABBCollision } from "../../lib/CollisionHelpers.js";
 import Hitbox from "../../lib/Hitbox.js";
 

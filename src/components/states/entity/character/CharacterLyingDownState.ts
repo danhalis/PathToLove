@@ -1,5 +1,4 @@
 import { images, keys, TILE_SIZE } from "globals";
-import State from "lib/State";
 import ImageNames from "../../../enums/ImageNames.js";
 import Sprite from "lib/Sprite";
 import Character from "components/entities/character/Character";

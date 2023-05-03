@@ -39,11 +39,9 @@ module.exports = {
   },
   resolve: {
     modules: [
-      path.resolve(__dirname, 'node_modules'),
       path.resolve(__dirname, 'src'),
-      path.resolve(__dirname, 'src/assets'),
     ],
-    extensions: ['.ts', '.js',],
+    extensions: ['.ts', '.js'],
     fallback: {
       fs: false,
     },
@@ -51,11 +49,10 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
-        { from: './src/assets', to: 'assets'}
+        { from: './src/assets', to: 'assets' }
       ]
     }),
     new HtmlWebpackPlugin({
-      title: 'Path To Love',
       template: './src/index.html',
     }),
     new WebpackShellPluginNext({

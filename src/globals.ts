@@ -15,7 +15,13 @@ export const GROUND_LEVEL = CANVAS_HEIGHT * 0.6;
 
 export const TILE_SIZE = 16;
 
-export const keys = {};
+interface KeyLogs {
+    a?: boolean;
+    w?: boolean;
+    s?: boolean;
+    d?: boolean;
+}
+export const keys: KeyLogs = {};
 export const sounds = new Sounds();
 export const images = new Images(context);
 export const fonts = new Fonts();
